@@ -1,0 +1,16 @@
+version: '3'
+services:
+  fastdfs:
+    #build: .
+    image: qbanxiaoli/fastdfs
+    restart: always
+    container_name: fastdfs
+    environment:
+      WEB_PORT: 10060
+      FDFS_PORT: 22122
+      STORAGE_PORT: 23000
+      FDHT_PORT: 11411
+      IP: 192.168.12.15
+    volumes:
+    - ./data:/var/local
+    network_mode: host

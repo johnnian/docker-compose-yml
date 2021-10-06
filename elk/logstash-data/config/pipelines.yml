@@ -1,0 +1,3 @@
+- pipeline.id: test
+  path.config: /usr/share/logstash/pipeline/logstash-test.conf
+  pipeline.workers: 3

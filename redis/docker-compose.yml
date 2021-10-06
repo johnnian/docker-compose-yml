@@ -1,0 +1,16 @@
+version: '3'
+services:
+  redis-node1:
+    container_name: redis-5.0.10-node1
+    restart: always
+    image: redis:5.0-alpine
+    ports:
+      - 6379:6379
+    command: redis-server /etc/conf/redis.conf
+    volumes:
+      - ./node1/data:/data
+      - ./node1/conf:/etc/conf
+    privileged: true
+    environment:
+      - TZ=Asia/Shanghai
+      - LANG=en_US.UTF-8

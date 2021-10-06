@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  rabbit:
+    image: rabbitmq:3-management
+    hostname: rabbitmq
+    container_name: "rabbitmq"
+    restart: always
+    ports:
+      - "10040:5672"
+      - "10041:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin123
+      - RABBITMQ_DEFAULT_VHOST=/
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./data:/var/lib/rabbitmq
+      - ./logs:/var/log/rabbitmq/log

@@ -1,0 +1,27 @@
+version: "3.1"
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: always
+    privileged: true
+    user: root
+    ports:
+      - 10070:9090
+    volumes:
+      - ./prometheus/config/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: always
+    privileged: true
+    user: root
+    ports:
+      - 10071:3000
+    environment:
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
+    volumes:
+      - ./grafana/data/grafana:/var/lib/grafana
+      - ./grafana/log:/var/log/grafana
+
